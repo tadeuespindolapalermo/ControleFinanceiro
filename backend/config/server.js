@@ -28,6 +28,9 @@ server.listen(port, function() {
     console.log(`BACKEND is running  on port ${port}.`)
 })
 
+// Exporta o servidor
+module.exports = server
+
 /*
 // Função própria que serve como Middleware
 // Recebe requisição, resposta e o next como parâmetro
