@@ -16,5 +16,17 @@ BillingCycle.methods(['get', 'post', 'put', 'delete'])
 // No Update, aplica as validações nos atributos (runValidators)
 BillingCycle.updateOptions({new: true, runValidators: true})
 
+// Serviço que retorna a quantidade de ciclos de pagamento que estão persistidas na collection do Mongo
+// Será necessário no Front-end na implementação de paginação
+BillingCycle.route('count', function (req, res, next) {
+    BillingCycle.count(function(error, value) {
+        if (error) {
+            res.status(500).json({errors: [error]})
+        } else {
+            res.json({value})
+        }
+    })
+})
+
 // Exporta o ciclo de pagamento
 module.exports = BillingCycle
