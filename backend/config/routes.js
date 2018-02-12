@@ -7,7 +7,7 @@ const express = require('express')
 
 // Em cima do server será definido as rotas, então server deve ser passado como parâmetro
 module.exports = function(server) {
-  
+
     // API Routes
     // Tudo que vier de /api será passado para o Middleware router
     const router = express.Router()
@@ -17,4 +17,8 @@ module.exports = function(server) {
     const billingCycleService = require('../api/billingCycle/billingCycleService')
     // Todos os serviços usará como url raiz /billingCycles
     billingCycleService.register(router, '/billingCycles')
+
+    // /api/billingSummary
+    const billingSummaryService = require('../api/billingSummary/billingSummaryService')
+    router.route('/billingSummary').get(billingSummaryService.getSummary)
 }
