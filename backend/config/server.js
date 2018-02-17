@@ -13,6 +13,9 @@ const express = require('express')
 // Criando o servidor iniciando o express.
 const server = express()
 
+// Permite Cross Origin Request para a Api
+const allowCors = require('./cors')
+
 // Urlencoded é o formato dos dados obtidos quando é feito a submissão de um formulário no front-end.
 // Extended true é capaz de interpretar variados tipos de informações que venham na submissão de um formulário.
 // Body parser é responsável por fazer a interpretação dos dados que venham a partir da submissão de um formulário.
@@ -21,6 +24,9 @@ server.use(bodyParser.urlencoded({ extended: true }))
 
 // Analisa se o corpo da requisição é um conteúdo json, se for, faz o parser transformando o json em um objeto para ser usado no back-end.
 server.use(bodyParser.json())
+
+// Permite fazer requisição de um domínio diferente do domínio da Api
+server.use(allowCors)
 
 // Servidor escutando a porta do back-end, caso não esteja sendo usada.
 // Chamar no console: npm run dev
