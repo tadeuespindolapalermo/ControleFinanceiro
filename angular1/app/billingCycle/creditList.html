@@ -15,7 +15,7 @@
                 </td>
                 <td>
                     <input ng-model="credit.value" class="form-control" placeholder="Informe a Valor"
-                        ng-readonly="bcCtrl.tabDelete" type="number" />
+                        ng-change="bcCtrl.calculateValues()" ng-readonly="bcCtrl.tabDelete" type="number" />
                 </td>
                 <td class="table-actions">
                     <button class="btn btn-success" ng-class="{disabled: bcCtrl.tabDelete}"
