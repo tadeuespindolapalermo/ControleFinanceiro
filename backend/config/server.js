@@ -16,6 +16,9 @@ const server = express()
 // Permite Cross Origin Request para a Api
 const allowCors = require('./cors')
 
+// Permite fazer o parse do skip e limit na função refresh do billingCycleController
+const queryParser = require('express-query-int')
+
 // Urlencoded é o formato dos dados obtidos quando é feito a submissão de um formulário no front-end.
 // Extended true é capaz de interpretar variados tipos de informações que venham na submissão de um formulário.
 // Body parser é responsável por fazer a interpretação dos dados que venham a partir da submissão de um formulário.
@@ -27,6 +30,9 @@ server.use(bodyParser.json())
 
 // Permite fazer requisição de um domínio diferente do domínio da Api
 server.use(allowCors)
+
+// Faz parse ne query string e converte para inteiro
+server.use(queryParser())
 
 // Servidor escutando a porta do back-end, caso não esteja sendo usada.
 // Chamar no console: npm run dev
